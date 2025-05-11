@@ -1,120 +1,76 @@
 #
-# Copyright (C) 2023 The Android Open Source Project
-# Copyright (C) 2023 SebaUbuntu's TWRP device tree generator
+# Copyright 2017 The Android Open Source Project
 #
-# SPDX-License-Identifier: Apache-2.0
+# Copyright (C) 2024-2025 The OrangeFox Recovery Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 #
 
-DEVICE_PATH := device/xiaomi/garnet
+# This contains the module build definitions for the hardware-specific
+# components for this device.
+#
+# As much as possible, those components should be built unconditionally,
+# with device-specific names to avoid collisions, to avoid device-specific
+# bitrot and build breakages. Building a component unconditionally does
+# *not* include it on all devices, so it is safe even with hardware-specific
+# components.
 
-# For building with minimal manifest
-ALLOW_MISSING_DEPENDENCIES := true
-
-AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    boot \
-    dtbo \
-    vbmeta \
-    vbmeta_system \
-    odm \
-    product \
-    system \
-    system_ext \
-    system_dlkm \
-    vendor \
-    vendor_boot \
-    vendor_dlkm
-    
-BOARD_USES_RECOVERY_AS_BOOT := true
-
-# Architecture
-TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
-TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 := 
-TARGET_CPU_VARIANT := generic
-TARGET_CPU_VARIANT_RUNTIME := kryo300
-
-TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv7-a-neon
-TARGET_2ND_CPU_ABI := armeabi-v7a
-TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := generic
-TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a75
-
-# APEX
-DEXPREOPT_GENERATE_APEX_IMAGE := true
-
-# Bootloader
-PRODUCT_PLATFORM := parrot
-TARGET_BOOTLOADER_BOARD_NAME := garnet
-TARGET_NO_BOOTLOADER := true
-TARGET_USES_UEFI := true
-
-# Kernel
-BOARD_BOOTIMG_HEADER_VERSION := 4
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
-BOARD_KERNEL_IMAGE_NAME := Image
-TARGET_KERNEL_CONFIG := garnet_defconfig
-TARGET_KERNEL_SOURCE := kernel/xiaomi/garnet
-
-# Kernel - prebuilt
-TARGET_FORCE_PREBUILT_KERNEL := true
-ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
-endif
-
-# Partitions
-BOARD_BOOTIMAGE_PARTITION_SIZE := 104857600
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 104857600
-BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
-BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
-TARGET_COPY_OUT_VENDOR := vendor
-BOARD_SUPER_PARTITION_SIZE := 9126805504 # TODO: Fix hardcoded value
-BOARD_SUPER_PARTITION_GROUPS := xiaomi_dynamic_partitions
-BOARD_XIAOMI_DYNAMIC_PARTITIONS_PARTITION_LIST := system system system_ext system_ext product product vendor vendor odm odm 
-BOARD_XIAOMI_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
-TARGET_COPY_OUT_VENDOR := vendor
-
-# Platform
-TARGET_BOARD_PLATFORM := parrot
+# Inherit from common
+-include $(COMMON_PATH)/BoardConfigCommon.mk
 
 # Recovery
-TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
+TARGET_OTA_ASSERT_DEVICE := garnet
 
-# Security patch level
-VENDOR_SECURITY_PATCH := 2021-08-01
+# TWRP specific build flags
+TW_FRAMERATE := 120
 
-# Verified Boot
-BOARD_AVB_ENABLE := true
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
+# Vibrator
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
 
+TARGET_RECOVERY_DEVICE_MODULES += libexpat
+RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libexpat.so
 
+# default brightness
+TW_DEFAULT_BRIGHTNESS := 1023
 
-# TWRP Configuration
-TW_THEME := portrait_hdpi
-TW_EXTRA_LANGUAGES := true
-TW_SCREEN_BLANK_ON_BOOT := true
-TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_USE_TOOLBOX := true
-TW_INCLUDE_REPACKTOOLS := true
-RECOVERY_SDCARD_ON_DATA := true
-TARGET_RECOVERY_QCOM_RTC_FIX := true
-TW_EXCLUDE_DEFAULT_USB_INIT := true
-TW_INCLUDE_NTFS_3G := true
-TW_USE_TOOLBOX := true
-TW_INCLUDE_RESETPROP := true
-TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
-TW_DEFAULT_BRIGHTNESS := 1200
-TW_Y_OFFSET := 91
-TW_H_OFFSET := -91
-TWRP_INCLUDE_LOGCAT := true
-TARGET_USES_LOGD := true
-TARGET_USES_MKE2FS := true
+# max brightness
+TW_MAX_BRIGHTNESS := 3071
+
+TW_DEVICE_VERSION := ${shell git -C $(DEVICE_PATH) rev-parse --short HEAD}-TegarXLu
+
+# enable screen blanking (disable this if some touch panels misbehave)
 TW_NO_SCREEN_BLANK := true
-TW_EXCLUDE_APEX := true
-TW_FRAMERATE := 60
+
+# device-specific system/vendor props
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+
+# device-specific fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
+
+# kernel
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)//prebuilt/kernel
+
+# -------- from lineage DT -------------
+# we're qcom
+BOARD_USES_QCOM_HARDWARE := true
+
+BOARD_USES_GENERIC_KERNEL_IMAGE := true
+
+#
+
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_xiaomi-garnet
+TARGET_RECOVERY_DEVICE_MODULES := libinit_xiaomi-garnet
