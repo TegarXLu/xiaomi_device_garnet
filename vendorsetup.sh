@@ -30,8 +30,8 @@
 	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
 	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
 	
-	export OF_MAINTAINER_AVATAR="$(DEVICE_PATH)/maintainer_avatar.png"
-       cp "${OF_MAINTAINER_AVATAR}" "$(gettop)/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About/maintainer.png"
+	export OF_MAINTAINER_AVATAR="device/xiaomi/garnet/maintainer_avatar.png"
+        cp "${OF_MAINTAINER_AVATAR}" "$(gettop)/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About/maintainer.png"
         export OF_MAINTAINER="TegarXLu"
         export FOX_VARIANT="UNOFFICIAL"
         
