@@ -18,7 +18,7 @@
 # 	Please maintain this if you use this script or any part of it
 #
 
-#set -o xtrace
+#!/bin/bash
 
 	export FOX_USE_SPECIFIC_MAGISK_ZIP=~/Magisk/Magisk-v28.1.zip
 	export FOX_VIRTUAL_AB_DEVICE=1
