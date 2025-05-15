@@ -129,7 +129,7 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 # Enable Fuse Passthrough
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.fuse.passthrough.enable=true
 
-TARGET_RECOVERY_DEVICE_DIRS += $(DEVICE_PATH)/twrp
+TARGET_RECOVERY_DEVICE_DIRS += $(DEVICE_PATH)/recovery 
 
 TW_DEFAULT_LANGUAGE     := en
 TW_USE_TOOLBOX          := true
