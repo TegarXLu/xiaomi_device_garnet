@@ -228,6 +228,9 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 # device-specific fstab
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
+# Version
+TW_DEVICE_VERSION := ${shell git -C $(DEVICE_PATH) rev-parse --short HEAD}-TegarXLu
+
 # -------- from lineage DT -------------
 # we're qcom
 BOARD_USES_QCOM_HARDWARE := true
