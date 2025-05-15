@@ -22,8 +22,8 @@
 
 	export FOX_USE_SPECIFIC_MAGISK_ZIP=~/Magisk/Magisk-v28.1.zip
 	export FOX_VIRTUAL_AB_DEVICE=1
-    export FOX_VANILLA_BUILD=1
-    export FOX_ENABLE_APP_MANAGER=1
+        export FOX_VANILLA_BUILD=1
+        export FOX_ENABLE_APP_MANAGER=1
 	export FOX_USE_BASH_SHELL=1
 	export FOX_ASH_IS_BASH=1
 	export FOX_RECOVERY_BOOT_PARTITION="/dev/block/bootdevice/by-name/boot"
@@ -31,9 +31,9 @@
 	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
 	
 	export OF_MAINTAINER_AVATAR="$(DEVICE_PATH)/maintainer_avatar.png"
-    cp "${OF_MAINTAINER_AVATAR}" "$(gettop)/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About/maintainer.png"
-    export OF_MAINTAINER="TegarXLu"
-    export FOX_VARIANT="UNOFFICIAL"
+       cp "${OF_MAINTAINER_AVATAR}" "$(gettop)/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About/maintainer.png"
+        export OF_MAINTAINER="TegarXLu"
+        export FOX_VARIANT="UNOFFICIAL"
         
 	export FOX_USE_TAR_BINARY=1
 	export FOX_USE_LZ4_BINARY=1
@@ -42,7 +42,7 @@
 	export FOX_USE_ZSTD_BINARY=1
 	export ALLOW_MISSING_DEPENDENCIES=true
 	export FOX_USE_NANO_EDITOR=1
-    export FOX_DELETE_AROMAFM=1
+        export FOX_DELETE_AROMAFM=1
 	export FOX_USE_DATE_BINARY=1
 else
 	if [ -z "$FOX_BUILD_DEVICE" -a -z "$BASH_SOURCE" ]; then
