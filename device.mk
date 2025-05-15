@@ -151,7 +151,7 @@ PRODUCT_TARGET_VNDK_VERSION := 33
 
 # OEM otacert
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    vendor/recovery/security/miui
+    $(LOCAL_PATH)/security/miui
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
