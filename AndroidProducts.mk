@@ -23,4 +23,3 @@ COMMON_LUNCH_CHOICES := \
     twrp_garnet-user \
     twrp_garnet-userdebug \
     twrp_garnet-eng
-#
