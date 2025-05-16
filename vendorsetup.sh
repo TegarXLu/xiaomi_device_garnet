@@ -30,12 +30,8 @@
 	export FOX_RECOVERY_BOOT_PARTITION="/dev/block/bootdevice/by-name/boot"
 	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
 	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
-	
-	export OF_MAINTAINER_AVATAR="device/xiaomi/garnet/maintainer_avatar.png"
-        cp "${OF_MAINTAINER_AVATAR}" "$(gettop)/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About/maintainer.png"
-        export OF_MAINTAINER="TegarXLu"
+	export OF_MAINTAINER="TegarXLu"
         export FOX_VARIANT="UNOFFICIAL"
-        
 	export FOX_USE_TAR_BINARY=1
 	export FOX_USE_LZ4_BINARY=1
 	export FOX_USE_SED_BINARY=1
@@ -45,6 +41,10 @@
 	export FOX_USE_NANO_EDITOR=1
         export FOX_DELETE_AROMAFM=1
 	export FOX_USE_DATE_BINARY=1
+ 
+	export OF_MAINTAINER_AVATAR="device/xiaomi/garnet/maintainer_avatar.png"
+        cp "${OF_MAINTAINER_AVATAR}" "$(gettop)/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About/maintainer.png"
+        
 else
 	if [ -z "$FOX_BUILD_DEVICE" -a -z "$BASH_SOURCE" ]; then
 		echo "I: This script requires bash. Not processing the $FDEVICE $(basename $0)"
