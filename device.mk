@@ -149,10 +149,6 @@ BOARD_API_LEVEL := 31
 SHIPPING_API_LEVEL := 31
 PRODUCT_TARGET_VNDK_VERSION := 33
 
-# OEM otacert
-PRODUCT_EXTRA_RECOVERY_KEYS += \
-    vendor/recovery/security/miui
-
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
