@@ -222,11 +222,11 @@ TW_MAX_BRIGHTNESS := 3071
 TW_NO_SCREEN_BLANK := true
 
 # device-specific system/vendor props
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+TARGET_SYSTEM_PROP += device/Poco/garnet/system.prop
+TARGET_VENDOR_PROP += device/Poco/garnet/vendor.prop
 
 # device-specific fstab
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/Poco/garnet/recovery/root/system/etc/recovery.fstab
 
 # Version
 TW_DEVICE_VERSION := ${shell git -C $(DEVICE_PATH) rev-parse --short HEAD}-TegarXLu
