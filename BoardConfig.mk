@@ -143,7 +143,7 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TW_THEME := portrait_hdpi
-TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone34/temp"
+TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone28/temp"
 TW_BRIGHTNESS_PATH := "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/backlight/panel0-backlight/brightness"
 TW_STATUS_ICONS_ALIGN := center
 TW_CUSTOM_CPU_POS := "50"
@@ -237,4 +237,35 @@ BOARD_USES_QCOM_HARDWARE := true
 
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 
-#
+# Shrp Flags
+SHRP_MAINTAINER := TegarXLu
+SHRP_DEVICE_CODE := garnet
+SHRP_REC_TYPE := TREBLE
+SHRP_DEVICE_TYPE := A/B
+SHRP_NOTCH := true
+SHRP_EDL_MODE := 1
+SHRP_EXTERNAL := /external_sdcard
+SHRP_INTERNAL := /sdcard
+SHRP_OTG := /usb_otg
+SHRP_FLASH := 1
+SHRP_DARK := true
+SHRP_REC := /dev/block/bootdevice/by-name/recovery
+SHRP_EXPRESS := true
+SHRP_PATH := device/xiaomi/garnet
+SHRP_FLASH := 0
+SHRP_AB := true
+
+# PBRP flags
+PB_DISABLE_DEFAULT_DM_VERITY := true
+PB_DISABLE_DEFAULT_PATCH_AVB2 := true
+PB_DISABLE_DEFAULT_TREBLE_COMP := true
+PB_TORCH_PATH := "/sys/class/leds/vibrator/brightness"
+PB_TORCH_MAX_BRIGHTNESS := 1
+
+# screen settings
+OF_SCREEN_H := 2400
+OF_STATUS_H := 100
+OF_STATUS_INDENT_LEFT := 48
+OF_STATUS_INDENT_RIGHT := 48
+OF_HIDE_NOTCH := 1
+OF_CLOCK_POS := 1
