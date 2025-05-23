@@ -26,7 +26,7 @@
 # components.
 
 # Device patch
-DEVICE_PATH := device/xiaomi/garnet
+DEVICE_PATH := device/Poco/garnet
 
 # Architecture
 TARGET_ARCH := arm64
