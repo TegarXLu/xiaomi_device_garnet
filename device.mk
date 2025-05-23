@@ -19,7 +19,7 @@
 #
 
 # Device patch
-LOCAL_PATH := device/Poco/garnet/
+LOCAL_PATH := device/Poco/garnet
 
 # Inherit from common AOSP config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
