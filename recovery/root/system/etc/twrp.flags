@@ -1,8 +1,4 @@
 # mount point   fstype  device                                          device2             flags
-# Logical partitions
-/system_ext     ext4    system_ext                                                          flags=display=System_EXT
-/vendor_dlkm    ext4    vendor_dlkm                                                         flags=display=Vendor_DLKM
-
 # Userdata/Metadata partitions
 /metadata       ext4    /dev/block/by-name/metadata                                         flags=display=Metadata
 
@@ -37,4 +33,9 @@
 
 # Removable storage
 /usb_otg       	auto    /dev/block/sdg1       			/dev/block/sdg4        	    flags=fsflags=utf8;display="USB-Storage";storage;wipeingui;removable
-#
+
+# Flashable logical partitions Emmc
+/Product_Image          emmc      /dev/block/mapper/product                                   flags=display="Product_Imgae";slotselect;backup=1;resize=1;flashimg=1
+/System_Image           emmc      /dev/block/mapper/system                                   flags=display="System_Image";slotselect;backup=1;resize=1;flashimg=1
+/System_ext_Image       emmc      /dev/block/mapper/system_ext                                 flags=display="System_ext_Image";slotselect;backup=1;resize=1;flashimg=1
+/Vendor_Image           emmc      /dev/block/mapper/vendor                                    flags=display="Vendor_Image";slotselect;backup=1;resize=1;flashimg=1
