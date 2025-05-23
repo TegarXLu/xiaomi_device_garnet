@@ -136,8 +136,8 @@ PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
 # Extras
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+TARGET_SYSTEM_PROP += device/Poco/garnet/system.prop
+TARGET_VENDOR_PROP += device/Poco/garnet/vendor.prop
 
 # TWRP specific build flags
 TARGET_RECOVERY_QCOM_RTC_FIX := true
