@@ -19,7 +19,7 @@
 #
 
 # Device patch
-LOCAL_PATH := device/xiaomi/garnet
+LOCAL_PATH := device/Poco/garnet/
 
 # Inherit from common AOSP config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
@@ -168,7 +168,7 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(DEVICE_PATH)/recovery/root/,$(TARGET_COPY_OUT_RECOVERY)/root/)
 
 # some OrangeFox-specific settings
-$(call inherit-product, $(DEVICE_PATH)/fox_garnet.mk)
+$(call inherit-product, device/Poco/garnet/fox_garnet.mk)
 
 # modules
 PRODUCT_PACKAGES += \
