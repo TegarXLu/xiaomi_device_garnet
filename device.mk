@@ -19,7 +19,7 @@
 #
 
 # Device patch
-LOCAL_PATH := device/TegarXLu/garnet
+LOCAL_PATH := device/xiaomi/garnet
 
 # Inherit from common AOSP config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
