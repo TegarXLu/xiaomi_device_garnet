@@ -50,10 +50,10 @@ PRODUCT_MODEL := | Poco X6 5G
 PRODUCT_MANUFACTURER := Poco
 
 # Common path for device trees
-COMMON_PATH := device/xiaomi/$(COMMON_SOC)-common
+COMMON_PATH := device/Poco/$(COMMON_SOC)-common
 
 # Device path for OEM device tree
-DEVICE_PATH := device/xiaomi/garnet
+DEVICE_PATH := device/Poco/garnet
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/Poco/garnet/device.mk)
