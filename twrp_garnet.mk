@@ -43,11 +43,11 @@ $(call inherit-product, vendor/$(CUSTOM_VENDOR)/config/common.mk)
 BOARD_VENDOR := $(or $(word 2,$(subst /, ,$(firstword $(MAKEFILE_LIST)))),$(value 2))
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
-PRODUCT_NAME := $(CUSTOM_VENDOR)_$(PRODUCT_DEVICE)
-PRODUCT_BRAND := $(BOARD_VENDOR)
-PRODUCT_MODEL := $(shell echo $(PRODUCT_BRAND) | tr  '[:lower:]' '[:upper:]')_$(PRODUCT_DEVICE)
-PRODUCT_MANUFACTURER := $(PRODUCT_BRAND)
+PRODUCT_DEVICE := garnet
+PRODUCT_NAME := twrp_garnet
+PRODUCT_BRAND := TegarXLu
+PRODUCT_MODEL := | Poco X6 5G
+PRODUCT_MANUFACTURER := Poco
 
 # Common path for device trees
 COMMON_PATH := device/$(PRODUCT_BRAND)/$(COMMON_SOC)-common
