@@ -56,5 +56,5 @@ COMMON_PATH := device/xiaomi/$(COMMON_SOC)-common
 DEVICE_PATH := device/xiaomi/garnet
 
 # Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/poco/garnet/device.mk)
+$(call inherit-product, device/Poco/garnet/device.mk)
 #
