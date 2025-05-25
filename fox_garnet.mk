@@ -48,6 +48,9 @@ OF_WIPE_METADATA_AFTER_DATAFORMAT := 1
 # avoid MTP issues after data format
 OF_BIND_MOUNT_SDCARD_ON_FORMAT := 1
 
+# we have a recovery partition
+OF_AB_DEVICE_WITH_RECOVERY_PARTITION := 1
+
 # don't spam the console with loop errors
 OF_LOOP_DEVICE_ERRORS_TO_LOG := 1
 
