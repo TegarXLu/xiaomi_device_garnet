@@ -51,33 +51,7 @@ fi
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	if [ -z "$THIS_DEVICE" ]; then
 		echo "ERROR! This script requires bash. Run '/bin/bash' and build again."
-		exit 1
-	fi
-
-	# sm84xx-common
-	fetch_sm84xx_common_repo;
-
-	export FOX_USE_SPECIFIC_MAGISK_ZIP=~/Magisk/Magisk-v28.1.zip
-	export FOX_VIRTUAL_AB_DEVICE=1
-        export FOX_VANILLA_BUILD=1
-    	export FOX_ENABLE_APP_MANAGER=1
-	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
-	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
-	export FOX_USE_BASH_SHELL=1
-	export FOX_ASH_IS_BASH=1
-	export FOX_USE_TAR_BINARY=1
-	export FOX_USE_LZ4_BINARY=1
-	export FOX_USE_SED_BINARY=1
-	export FOX_USE_XZ_UTILS=1
-	export FOX_USE_ZSTD_BINARY=1
-	export FOX_USE_NANO_EDITOR=1
-    	export FOX_DELETE_AROMAFM=1
-	export OF_MAINTAINER="TegarXLu"
-        export FOX_VARIANT="UNOFFICIAL"
-        
-        export OF_MAINTAINER_AVATAR="device/xiaomi/garnet/maintainer_avatar.png"
-        cp "${OF_MAINTAINER_AVATAR}" "$(gettop)/bootable/recovery/gui/theme/portrait_hdpi/images/Default/About/maintainer.png"
-      
+		exit 1 
 else
 	if [ -z "$FOX_BUILD_DEVICE" -a -z "$BASH_SOURCE" ]; then
 		echo "I: This script requires bash. Not processing the $FDEVICE $(basename $0)"
