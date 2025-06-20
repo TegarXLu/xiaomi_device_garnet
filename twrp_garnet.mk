@@ -18,8 +18,6 @@
 #
 # Only the below variable(s) need to be changed!
 #
-# Identifier for common folder
-COMMON_SOC := sm84xx
 
 # Define hardware platform
 PRODUCT_PLATFORM := parrot
