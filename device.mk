@@ -153,7 +153,7 @@ TW_INCLUDE_LPDUMP  := true
 TW_INPUT_BLACKLIST := "uinput-goodix"
 
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone7/temp"
-TW_BRIGHTNESS_PATH      := "/sys/class/backlight/panel0-backlight/brightness"
+TW_BRIGHTNESS_PATH      := "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/backlight/panel0-backlight/brightness"
 
 # Vendor modules required for the recovery to function properly
 TW_LOAD_VENDOR_MODULES  += "focaltech_ts_i2c.ko goodix_ts_9896.ko
