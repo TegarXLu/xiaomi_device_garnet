@@ -47,6 +47,9 @@ PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Poco X6 5G
 PRODUCT_MANUFACTURER := $(PRODUCT_BRAND)
 
+# Common path for device trees
+COMMON_PATH := device/$(PRODUCT_BRAND)/$(COMMON_SOC)-common
+
 # Device path for OEM device tree
 DEVICE_PATH := device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)
 
