@@ -57,7 +57,7 @@ DEVICE_PATH := device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
 
 # PBRP - Flashlight path
-PB_TORCH_PATH := "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/backlight/panel0-backlight/brightness"
+PB_TORCH_PATH := "/sys/class/leds/vibrator/brightness"
 
 # PBRP - Disable flashlight brightness slider
 PB_TORCH_MAX_BRIGHTNESS := 1
