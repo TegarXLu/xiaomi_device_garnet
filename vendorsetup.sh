@@ -1,14 +1,23 @@
 #!/bin/bash
 
-# CCACHE
+# Gunakan cache
 export USE_CCACHE=1
-export CCACHE_EXEC=/usr/bin/ccache
-export CCACHE_MAXSIZE="32G"
-export CCACHE_DIR="/mnt/ccache"
+export CCACHE_EXEC=$(which ccache)
 
-# Warn if CCACHE_DIR is an invalid directory
-if [ $USE_CCACHE = 1 ] && [ ! -d ${CCACHE_DIR} ];
- then
-   echo "CCACHE Directory/Partition is not mounted at \"${CCACHE_DIR}\""
-   echo "Please edit the CCACHE_DIR build variable or mount the directory."
+# Gunakan direktori cache yang aman di CI atau lokal
+if [ -n "$RUNNER_TEMP" ]; then
+    export CCACHE_DIR="$RUNNER_TEMP/ccache"
+else
+    export CCACHE_DIR="$HOME/.ccache"
 fi
+
+# Buat direktori jika belum ada dan beri izin akses penuh
+mkdir -p "${CCACHE_DIR}/tmp"
+chmod -R u+rwx "${CCACHE_DIR}"
+
+# Set batas maksimal ukuran cache
+ccache -M "${CCACHE_MAXSIZE:-32G}"
+
+# Tampilkan info debug
+echo "Using CCACHE_DIR: $CCACHE_DIR"
+ccache -s
