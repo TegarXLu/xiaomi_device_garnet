@@ -57,4 +57,12 @@ DEVICE_PATH := device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
-#
+
+# PBRP - Flashlight path
+PB_TORCH_PATH := "/system/etc/flashlight"
+
+# PBRP - Disable flashlight brightness slider
+PB_TORCH_MAX_BRIGHTNESS := 1
+
+# PBRP - Disable Treble compatibility check
+PB_DISABLE_DEFAULT_TREBLE_COMP := true
