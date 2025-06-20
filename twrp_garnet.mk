@@ -40,11 +40,11 @@ $(call inherit-product, vendor/$(CUSTOM_VENDOR)/config/common.mk)
 # OEM Info (automatically taken from device tree path)
 BOARD_VENDOR := $(or $(word 2,$(subst /, ,$(firstword $(MAKEFILE_LIST)))),$(value 2))
 
-## Device identifier
-PRODUCT_DEVICE := garnet
-PRODUCT_NAME := twrp_garnet
-PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := Poco X6 5G
+## Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
+PRODUCT_NAME := $(CUSTOM_VENDOR)_$(PRODUCT_DEVICE)
+PRODUCT_BRAND := $(BOARD_VENDOR)
+PRODUCT_MODEL := $(shell echo $(PRODUCT_BRAND) | tr  '[:lower:]' '[:upper:]')_$(PRODUCT_DEVICE)
 PRODUCT_MANUFACTURER := $(PRODUCT_BRAND)
 
 # Common path for device trees
