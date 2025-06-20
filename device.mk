@@ -131,6 +131,8 @@ PRODUCT_PROPERTY_OVERRIDES += persist.sys.fuse.passthrough.enable=true
 
 TARGET_RECOVERY_DEVICE_DIRS += $(DEVICE_PATH)/recovery 
 
+# TWRP - Specifics
+TW_DEVICE_VERSION       := TegarXLu
 TW_DEFAULT_LANGUAGE     := en
 TW_USE_TOOLBOX          := true
 TW_INCLUDE_NTFS_3G      := true
@@ -141,6 +143,29 @@ TW_INCLUDE_LIBRESETPROP := true
 TW_EXTRA_LANGUAGES      := true
 TW_EXCLUDE_APEX         := true
 TW_INCLUDE_FASTBOOTD    := true
+
+# TWRP - Partition tools
+# PBRP source does not offer TW_ENABLE_ALL_PARTITION_TOOLS at the moment
+TW_INCLUDE_LPTOOLS := true
+TW_INCLUDE_LPDUMP  := true
+
+# Blacklist Goodix fingerprint. There's no reason to include this input in recovery
+TW_INPUT_BLACKLIST := "uinput-goodix"
+
+TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone7/temp"
+TW_BRIGHTNESS_PATH      := "/sys/class/backlight/panel0-backlight/brightness"
+
+# Vendor modules required for the recovery to function properly
+TW_LOAD_VENDOR_MODULES  += "focaltech_ts_i2c.ko goodix_ts_9896.ko
+TW_LOAD_VENDOR_MODULES  += adsp_loader_dlkm.ko qti_battery_charger.ko camera.ko"
+
+TW_BATTERY_SYSFS_WAIT_SECONDS := 6
+TW_EXCLUDE_DEFAULT_USB_INIT   := true
+TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
+
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF := true
 
 # API
 PRODUCT_SHIPPING_API_LEVEL  := 31
